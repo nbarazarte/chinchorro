@@ -61,7 +61,7 @@
 
 								<div class="panel-body">
 
-								{!! Form::open(['route' => 'registrarAu', 'id' => 'demo-form', '', 'enctype'=>'multipart/form-data', 'class' => 'sky-form boxed validate', 'data-success' => 'Se ha creado el Autor con éxito','data-toastr-position' => 'top-right']) !!} 										
+								{!! Form::open(['route' => 'registrarAu', 'id' => 'demo-form', '', 'enctype'=>'multipart/form-data', 'class' => 'sky-form boxed ', 'data-success' => 'Se ha creado el Autor con éxito','data-toastr-position' => 'top-right']) !!} 										
 
 											<fieldset>
 												

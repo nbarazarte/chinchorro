@@ -72,7 +72,7 @@ class AutoresIlernusController extends Controller
 
         //return redirect($this->redirectPath()); 
         Session::flash('message','¡El autor ha sido creado con éxito!');
-        return Redirect::to('/Crear-Autor-iLernus'); 
+        return Redirect::to('/Crear-Autor-Blog'); 
         
     }
 
@@ -203,7 +203,7 @@ class AutoresIlernusController extends Controller
         $autor->save();
 
         Session::flash('message','¡Se han editado los datos del autor con éxito!');
-        return Redirect::to('/Ver-Autor-iLernus-'.$request->id); 
+        return Redirect::to('/Ver-Autor-Blog-'.$request->id); 
 
     }
 
@@ -215,7 +215,7 @@ class AutoresIlernusController extends Controller
         $autor->save();
 
         Session::flash('message','¡Se ha cambiado la imágen de perfil con éxito!');
-        return Redirect::to('/Ver-Autor-iLernus-'.$request->id); 
+        return Redirect::to('/Ver-Autor-Blog-'.$request->id); 
 
     }
 
@@ -226,7 +226,7 @@ class AutoresIlernusController extends Controller
 
         Session::flash('message','¡Se ha eliminado la imágen de perfil con éxito!');
 
-        return Redirect::to('/Ver-Autor-iLernus-'.$request->id); 
+        return Redirect::to('/Ver-Autor-Blog-'.$request->id); 
        
     }
 
@@ -236,7 +236,7 @@ class AutoresIlernusController extends Controller
         $cuenta = DB::update('update tbl_autores set bol_eliminado = 1 where id = '.$request->id.' and bol_eliminado = 0');
 
         Session::flash('message','¡Se ha eliminado la cuenta con éxito!');
-        return Redirect::to('/Buscar-Autor-iLernus'); 
+        return Redirect::to('/Buscar-Autor-Blog'); 
 
     }
 

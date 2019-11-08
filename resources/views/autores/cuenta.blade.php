@@ -14,11 +14,11 @@
 
 				<!-- page title -->
 				<header id="page-header">
-					<h1>Ver Autor iLernus</h1>
+					<h1>Ver Autor Blog</h1>
 					<ol class="breadcrumb">
 						<li><a href="{{ route('home')}}">Dashboard</a></li>
-						<li><a href="{{ route('buscarCuentaAu')}}">Buscar Autor iLernus</a></li>
-						<li class="active">Ver Autor iLernus</li>
+						<li><a href="{{ route('buscarCuentaAu')}}">Buscar Autor Blog</a></li>
+						<li class="active">Ver Autor Blog</li>
 					</ol>
 				</header>
 
@@ -226,7 +226,7 @@
 												{!! Form::close() !!}
 
 												<hr />
-												{!! Form::open(['route' => 'editarImagenAu', 'id' => 'imagen-form', '', 'enctype'=>'multipart/form-data', 'class' => 'form-horizontal validate', 'data-success' => 'Se ha cambiado la imágen de perfil con éxito','data-toastr-position' => 'top-right', 'onsubmit' => 'location.reload()']) !!} 
+												{!! Form::open(['route' => 'editarImagenAu', 'id' => 'imagen-form', '', 'enctype'=>'multipart/form-data', 'class' => 'form-horizontal ', 'data-success' => 'Se ha cambiado la imágen de perfil con éxito','data-toastr-position' => 'top-right', 'onsubmit' => 'location.reload()']) !!} 
 												<h4>Imágen de Perfil</h4>
 												{!! Form::input('hidden', 'id', $autor->id, ['id' => 'id', 'class'=> 'form-control required','maxlength'=> '10', 'readonly' ]) !!}  
 												<fieldset>
@@ -261,7 +261,7 @@
 
 										<div id="eliminar" class="tab-pane">
 
-												{!! Form::open(['route' => 'eliminarImagenAu', 'id' => 'clave-form', '', 'enctype'=>'multipart/form-data', 'class' => 'form-horizontal validate', 'data-success' => 'Se ha enviado la nueva clave al instructor con éxito','data-toastr-position' => 'top-right', 'onsubmit' => 'location.reload();']) !!} 	
+												{!! Form::open(['route' => 'eliminarImagenAu', 'id' => 'clave-form', '', 'enctype'=>'multipart/form-data', 'class' => 'form-horizontal ', 'data-success' => 'Se ha enviado la nueva clave al instructor con éxito','data-toastr-position' => 'top-right', 'onsubmit' => 'location.reload();']) !!} 	
 												<h4>Imágen de Perfil</h4>
 												{!! Form::input('hidden', 'id', $autor->id, ['id' => 'id', 'class'=> 'form-control required','maxlength'=> '10', 'readonly' ]) !!}  
 

@@ -76,45 +76,45 @@ Route::group(['middleware' => 'auth'], function () {
 	//Para el Equipo de Ilernus:
 
 		//Crear Director o Gerente:
-		Route::get('Crear-Equipo-iLernus', [
+		Route::get('Crear-Equipo', [
 						'uses' => 'EquipoIlernusController@crearCuenta',
 						'as' =>'registrarPi'
 		]);
 
-		Route::post('Crear-Equipo-iLernus', 'EquipoIlernusController@postCrearCuenta');
+		Route::post('Crear-Equipo', 'EquipoIlernusController@postCrearCuenta');
 
 		//Buscar Director o Gerente:
-		Route::get('Buscar-Equipo-iLernus', [
+		Route::get('Buscar-Equipo', [
 						'uses' => 'EquipoIlernusController@buscarCuenta',
 						'as' =>'buscarCuentaPi'
 		]);
 
 		//Ver Director o Gerente:
-		Route::get('Ver-Equipo-iLernus-{id}', [
+		Route::get('Ver-Equipo-{id}', [
 						'uses' => 'EquipoIlernusController@verCuenta',
 						'as' =>'cuentaPi'
 		]);
 
 		//Editar Director o Gerente
-		Route::post('Editar-Equipo-iLernus', [
+		Route::post('Editar-Equipo', [
 						'uses' => 'EquipoIlernusController@editarCuenta',
 						'as' =>'editarCuentaPi'
 		]);
 
 		//Editar Director o Gerente
-		Route::post('Editar-Imagen-Equipo-iLernus', [
+		Route::post('Editar-Imagen-Equipo', [
 						'uses' => 'EquipoIlernusController@editarImagen',
 						'as' =>'editarImagenPi'
 		]);
 
 		//Eliminar Director o Gerente
-		Route::post('Eliminar-Cuenta-Equipo-iLernus', [
+		Route::post('Eliminar-Cuenta-Equipo', [
 						'uses' => 'EquipoIlernusController@eliminarCuenta',
 						'as' =>'eliminarCuentaPi'
 		]);
 
 		//Eliminar Director o Gerente
-		Route::post('Eliminar-Imagen-Persona-Ilernus', [
+		Route::post('Eliminar-Imagen-Persona', [
 						'uses' => 'EquipoIlernusController@eliminarImagen',
 						'as' =>'eliminarImagenPi'
 		]);
@@ -122,91 +122,91 @@ Route::group(['middleware' => 'auth'], function () {
 	//Para los Instructores de Ilernus:
 
 		//Crear Instructores:
-		Route::get('Crear-Instructor-iLernus', [
+		Route::get('Crear-Instructor', [
 						'uses' => 'InstructoresIlernusController@crearCuenta',
 						'as' =>'registrarIns'
 		]);
 
-		Route::post('Crear-Instructor-iLernus', 'InstructoresIlernusController@postCrearCuenta');
+		Route::post('Crear-Instructor', 'InstructoresIlernusController@postCrearCuenta');
 
 		//Buscar Instructores:
-		Route::get('Buscar-Instructor-iLernus', [
+		Route::get('Buscar-Instructor', [
 						'uses' => 'InstructoresIlernusController@buscarCuenta',
 						'as' =>'buscarCuentaIns'
 		]);
 
 		//Ver Instructores:
-		Route::get('Ver-Instructor-iLernus-{id}', [
+		Route::get('Ver-Instructor-{id}', [
 						'uses' => 'InstructoresIlernusController@verCuenta',
 						'as' =>'cuentaIns'
 		]);
 
 		//Editar Instructores
-		Route::post('Editar-Instructor-iLernus', [
+		Route::post('Editar-Instructor', [
 						'uses' => 'InstructoresIlernusController@editarCuenta',
 						'as' =>'editarCuentaIns'
 		]);
 
 		//Editar Instructores
-		Route::post('Editar-Imagen-Instructor-iLernus', [
+		Route::post('Editar-Imagen-Instructor', [
 						'uses' => 'InstructoresIlernusController@editarImagen',
 						'as' =>'editarImagenIns'
 		]);
 
 		//Eliminar Instructores
-		Route::post('Eliminar-Cuenta-Instructor-iLernus', [
+		Route::post('Eliminar-Cuenta-Instructor', [
 						'uses' => 'InstructoresIlernusController@eliminarCuenta',
 						'as' =>'eliminarCuentaIns'
 		]);
 
 		//Eliminar Instructores
-		Route::post('Eliminar-Imagen-Instructor-iLernus', [
+		Route::post('Eliminar-Imagen-Instructor', [
 						'uses' => 'InstructoresIlernusController@eliminarImagen',
 						'as' =>'eliminarImagenIns'
 		]);
 
-	//Para los Autores de iLernus:
+	//Para los Autores de Blog:
 
 		//Crear Autor:
-		Route::get('Crear-Autor-iLernus', [
+		Route::get('Crear-Autor-Blog', [
 						'uses' => 'AutoresIlernusController@crearCuenta',
 						'as' =>'registrarAu'
 		]);
 
-		Route::post('Crear-Autor-iLernus', 'AutoresIlernusController@postCrearCuenta');
+		Route::post('Crear-Autor-Blog', 'AutoresIlernusController@postCrearCuenta');
 
 		//Buscar Autor:
-		Route::get('Buscar-Autor-iLernus', [
+		Route::get('Buscar-Autor-Blog', [
 						'uses' => 'AutoresIlernusController@buscarCuenta',
 						'as' =>'buscarCuentaAu'
 		]);
 
 		//Ver Autor:
-		Route::get('Ver-Autor-iLernus-{id}', [
+		Route::get('Ver-Autor-Blog-{id}', [
 						'uses' => 'AutoresIlernusController@verCuenta',
 						'as' =>'cuentaAu'
 		]);
 
 		//Editar Autor
-		Route::post('Editar-Autor-iLernus', [
+		Route::post('Editar-Autor-Blog', [
 						'uses' => 'AutoresIlernusController@editarCuenta',
 						'as' =>'editarCuentaAu'
 		]);
 
 		//Editar Autor
-		Route::post('Editar-Imagen-Autor-iLernus', [
+		Route::post('Editar-Imagen-Autor-Blog', [
 						'uses' => 'AutoresIlernusController@editarImagen',
 						'as' =>'editarImagenAu'
 		]);
 
 		//Eliminar Autor
-		Route::post('Eliminar-Cuenta-Autor-iLernus', [
+		Route::post('Eliminar-Cuenta-Autor-Blog', [
 						'uses' => 'AutoresIlernusController@eliminarCuenta',
 						'as' =>'eliminarCuentaAu'
 		]);
 
 		//Eliminar Imágen Autor
-		Route::post('Eliminar-Imagen-Autor-iLernus', [
+		Route::post('Eliminar-Imagen-Autor-Blog', [
 						'uses' => 'AutoresIlernusController@eliminarImagen',
 						'as' =>'eliminarImagenAu'
 		]);
@@ -216,68 +216,68 @@ Route::group(['middleware' => 'auth'], function () {
 	//Para los Post de iLernus:
 
 		//Crear Post:
-		Route::get('Crear-Post-iLernus', [
+		Route::get('Crear-Post', [
 						'uses' => 'PostController@crearPost',
 						'as' =>'registrarPost'
 		]);
 
-		Route::post('Crear-Post-iLernus', 'PostController@postCrearPost');
+		Route::post('Crear-Post', 'PostController@postCrearPost');
 
 
 
 		//Buscar Post:
-		Route::get('Buscar-Post-iLernus', [
+		Route::get('Buscar-Post', [
 						'uses' => 'PostController@buscarPost',
 						'as' =>'buscarPost'
 		]);
 
 
 		//Ver Post:
-		Route::get('Ver-Post-iLernus-{id}', [
+		Route::get('Ver-Post-{id}', [
 						'uses' => 'PostController@verPost',
 						'as' =>'verPost'
 		]);
 
 
 		//Editar Post
-		Route::post('Editar-Post-iLernus', [
+		Route::post('Editar-Post', [
 						'uses' => 'PostController@editarPost',
 						'as' =>'editarPost'
 		]);
 
 
 		//Editar Post multimedia: simple
-		Route::post('Editar-Post-Multimedia4-iLernus', [
+		Route::post('Editar-Post-Multimedia4', [
 						'uses' => 'PostController@editarMultimedia4',
 						'as' =>'editarMu4'
 		]);
 
 		//Editar Post multimedia: una imagen
-		Route::post('Editar-Post-Multimedia-iLernus', [
+		Route::post('Editar-Post-Multimedia', [
 						'uses' => 'PostController@editarMultimedia',
 						'as' =>'editarMu'
 		]);
 
 		//Editar Post multimedia: carrusel
-		Route::post('Editar-Post-Multimedia2-iLernus', [
+		Route::post('Editar-Post-Multimedia2', [
 						'uses' => 'PostController@editarMultimedia2',
 						'as' =>'editarMu2'
 		]);
 
 		//Editar Post multimedia: audio y video
-		Route::post('Editar-Post-Multimedia3-iLernus', [
+		Route::post('Editar-Post-Multimedia3', [
 						'uses' => 'PostController@editarMultimedia3',
 						'as' =>'editarMu3'
 		]);
 
 		//Editar Post Etiquetas:
-		Route::post('Editar-Post-Etiquetas-iLernus', [
+		Route::post('Editar-Post-Etiquetas', [
 						'uses' => 'PostController@editarEtiquetas',
 						'as' =>'editarEtiquetas'
 		]);
 
 		//Eliminar Post
-		Route::post('Eliminar-Post-iLernus', [
+		Route::post('Eliminar-Post', [
 						'uses' => 'PostController@eliminarPost',
 						'as' =>'eliminarPost'
 		]);
