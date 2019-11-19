@@ -1,4 +1,4 @@
-{!! Form::open(['route' => 'editarMu2', 'id' => 'imagen-form', '', 'enctype'=>'multipart/form-data', 'class' => 'form-horizontal validate', 'data-success' => 'Se ha editado el contenido multimedia con éxito','data-toastr-position' => 'top-right', 'onsubmit' => 'location.reload()']) !!} 
+{!! Form::open(['route' => 'editarMu2', 'id' => 'imagen-form', '', 'enctype'=>'multipart/form-data', 'class' => 'form-horizontal ', 'data-success' => 'Se ha editado el contenido multimedia con éxito','data-toastr-position' => 'top-right', 'onsubmit' => 'location.reload()']) !!} 
 
 {!! Form::input('hidden', 'id', $post->idpost, ['id' => 'id', 'class'=> 'form-control required','maxlength'=> '10', 'readonly' ]) !!}  
 

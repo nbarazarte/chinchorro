@@ -83,7 +83,7 @@ class PostController extends Controller
 
         //return redirect($this->redirectPath()); 
         Session::flash('message','¡El post ha sido creado con éxito!');
-        return Redirect::to('/Crear-Post-iLernus'); 
+        return Redirect::to('/Crear-Post'); 
         
     }
 
@@ -345,18 +345,18 @@ class PostController extends Controller
         $post->save();
 
         Session::flash('message','¡Se han editado los datos del post con éxito!');
-        return Redirect::to('/Ver-Post-iLernus-'.$request->id); 
+        return Redirect::to('/Ver-Post-'.$request->id); 
 
     }
 
     public function editarMultimedia(Request $request)
     {
-        
+    
         $blb_img1 = base64_encode(file_get_contents($request->blb_img1));
         $publicacion = DB::update("update tbl_post set str_tipo = '".$request->str_tipo."', blb_img1 = '".$blb_img1."' where id = ".$request->id);
 
         Session::flash('message','¡Se ha cambiado la imágen del post con éxito!');
-        return Redirect::to('/Ver-Post-iLernus-'.$request->id); 
+        return Redirect::to('/Ver-Post-'.$request->id); 
 
     }
 
@@ -370,7 +370,7 @@ class PostController extends Controller
         $publicacion = DB::update("update tbl_post set str_tipo = '".$request->str_tipo."', blb_img1 = '".$blb_img1."', blb_img2 = '".$blb_img2."', blb_img3 = '".$blb_img3."' where id = ".$request->id);
 
         Session::flash('message','¡Se ha cambiado la imágen del post con éxito!');
-        return Redirect::to('/Ver-Post-iLernus-'.$request->id); 
+        return Redirect::to('/Ver-Post-'.$request->id); 
 
     }
 
@@ -382,7 +382,7 @@ class PostController extends Controller
         $post->save();
 
         Session::flash('message','¡Se ha cambiado el contenido multimedia con éxito!');
-        return Redirect::to('/Ver-Post-iLernus-'.$request->id); 
+        return Redirect::to('/Ver-Post-'.$request->id); 
 
     }
 
@@ -402,7 +402,7 @@ class PostController extends Controller
         $post->save();
 
         Session::flash('message','¡Se ha quitado el contenido multimedia con éxito!');
-        return Redirect::to('/Ver-Post-iLernus-'.$request->id); 
+        return Redirect::to('/Ver-Post-'.$request->id); 
 
     }
 
@@ -430,7 +430,9 @@ class PostController extends Controller
      
 
         Session::flash('message','¡Se han editado las etiquetas con éxito!');
-        return Redirect::to('/Ver-Post-iLernus-'.$request->id); 
+        return Redirect::to('/Ver-Post-'.$request->id);   
+
+
 
     }
 
@@ -441,7 +443,7 @@ class PostController extends Controller
         $post = DB::update('update tbl_post set bol_eliminado = 1 where id = '.$request->id.' and bol_eliminado = 0');
 
         Session::flash('message','¡Se ha eliminado el post con éxito!');
-        return Redirect::to('/Buscar-Post-iLernus'); 
+        return Redirect::to('/Buscar-Post'); 
 
     }
 

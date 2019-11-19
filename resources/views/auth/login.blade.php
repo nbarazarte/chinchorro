@@ -27,6 +27,7 @@
 
 			<!-- login form -->
 			 {!! Form::open(['route' => 'login', 'class' => 'sky-form boxed', '']) !!}
+			 {!! csrf_field() !!}
 				<header><i class="fa fa-users"></i> Cryptia Exchange - Admin </header>
 
 				<!--

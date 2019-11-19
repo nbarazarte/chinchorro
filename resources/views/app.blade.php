@@ -1,9 +1,10 @@
 <!doctype html>
 <html lang="en-US">
 	<head>
+		
 		<meta charset="utf-8" />
 		<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-		<title>iAdmin - Administrador iLernus</title>
+		<title>Cryptia Exchange - Admin</title>
 		<meta name="description" content="" />
 		<meta name="Author" content="Neil Barazarte [ezebarazarte@gmail.com]" />
 
@@ -24,6 +25,9 @@
 
 		<!-- PAGE LEVEL STYLES -->
 		{!! Html::style('smarty/assets/css/layout-datatables.css') !!}
+
+
+
 
 	</head>
 	<!--

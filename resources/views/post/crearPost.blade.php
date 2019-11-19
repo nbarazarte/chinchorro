@@ -12,10 +12,10 @@
 
 				<!-- page title -->
 				<header id="page-header">
-					<h1>Crear Post de Ilernus</h1>
+					<h1>Crear Post</h1>
 					<ol class="breadcrumb">
 						<li><a href="{{ route('home')}}">Dashboard</a></li>
-						<li class="active">Crear Post de Ilernus</li>
+						<li class="active">Crear Post</li>
 					</ol>
 				</header>
 				<!-- /page title -->

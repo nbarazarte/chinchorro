@@ -15,10 +15,10 @@
 
 				<!-- page title -->
 				<header id="page-header">
-					<h1>Buscar Posts de iLernus</h1>
+					<h1>Buscar Posts</h1>
 					<ol class="breadcrumb">
 					 <li><a href="{{ route('home')}}">Dashboard</a></li>
-					  <li class="active">Buscar Posts de iLernus</li>
+					  <li class="active">Buscar Posts</li>
 					</ol>
 
 
@@ -44,7 +44,7 @@
 					<div id="panel-1" class="panel panel-default">
 						<div class="panel-heading">
 							<span class="title elipsis">
-								<strong>LISTADO DE posts DE ILERNUS</strong> <!-- panel title -->
+								<strong>LISTADO DE posts</strong> <!-- panel title -->
 							</span>
 
 							<!-- right options -->

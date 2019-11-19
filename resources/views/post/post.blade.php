@@ -88,11 +88,11 @@
 
 				<!-- page title -->
 				<header id="page-header">
-					<h1>Ver Post de iLernus</h1>
+					<h1>Ver Post</h1>
 					<ol class="breadcrumb">
 						<li><a href="{{ route('home')}}">Dashboard</a></li>
-						<li><a href="{{ route('buscarPost')}}">Buscar Post de iLernus</a></li>
-						<li class="active">Ver Post de iLernus</li>
+						<li><a href="{{ route('buscarPost')}}">Buscar Post</a></li>
+						<li class="active">Ver Post</li>
 					</ol>
 				</header>
 
@@ -561,7 +561,7 @@
 	  		document.getElementById('carrusel-imagen').style.display='none';
 	  		document.getElementById('audio').style.display='none';
 	  		document.getElementById('video').style.display='none';
-	  		document.getElementById('defecto').style.display='none';
+	  		//document.getElementById('defecto').style.display='none';
 
 	  	}else if (name=='imagen'){ 
 
@@ -570,7 +570,7 @@
 	  		document.getElementById('carrusel-imagen').style.display='none';
 	  		document.getElementById('audio').style.display='none';
 	  		document.getElementById('video').style.display='none';
-	  		document.getElementById('defecto').style.display='none';		
+	  		//document.getElementById('defecto').style.display='none';		
 
 		}else if (name=='carrusel-imagen'){ 
 
@@ -579,7 +579,7 @@
 	  			document.getElementById('carrusel-imagen').style.display='inline';
 	  		document.getElementById('audio').style.display='none';
 	  		document.getElementById('video').style.display='none';
-	  		document.getElementById('defecto').style.display='none';  		
+	  		//document.getElementById('defecto').style.display='none';  		
 
 		}else if (name=='video'){ 
 
@@ -588,7 +588,7 @@
 	  		document.getElementById('carrusel-imagen').style.display='none';
 	  		document.getElementById('audio').style.display='none';
 	  			document.getElementById('video').style.display='inline';
-	  		document.getElementById('defecto').style.display='none';
+	  		//document.getElementById('defecto').style.display='none';
 
 		}else if (name=='audio'){ 
 
@@ -597,7 +597,7 @@
 	  		document.getElementById('carrusel-imagen').style.display='none';
 	  			document.getElementById('audio').style.display='inline';
 	  		document.getElementById('video').style.display='none';
-	  		document.getElementById('defecto').style.display='none';
+	  		//document.getElementById('defecto').style.display='none';
 
 		}
 
