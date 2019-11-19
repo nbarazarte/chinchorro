@@ -15,7 +15,9 @@
 		<i class="main-icon fa fa-graduation-cap"></i> <span>Tutoriales</span>
 	</a>
 	<ul><!-- submenus -->
-		<li><a href="{{ route('registrarIns') }}">Nuevo</a></li>
-			<li><a href="{{ route('buscarCuentaIns') }}">Buscar</a></li>
+		<li><a href="{{ route('registrarTutorial')}}">Nuevo</a></li>
+		<li><a href="{{ route('buscarTutorial')}}">Buscar</a></li>
 	</ul>
 </li>
+
+

@@ -213,7 +213,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 
-	//Para los Post de iLernus:
+	//Para los Post:
 
 		//Crear Post:
 		Route::get('Crear-Post', [
@@ -282,7 +282,48 @@ Route::group(['middleware' => 'auth'], function () {
 						'as' =>'eliminarPost'
 		]);
 
+/********************************************************/
+	//Para los tutoriales:
 
+		//Crear Tutorial:
+		Route::get('Crear-Tutorial', [
+						'uses' => 'TutorialController@crearTutorial',
+						'as' =>'registrarTutorial'
+		]);
+
+		Route::post('Crear-Tutorial', 'TutorialController@postCrearTutorial');
+
+		//Buscar Tutorial:
+		Route::get('Buscar-Tutorial', [
+						'uses' => 'TutorialController@buscarTutorial',
+						'as' =>'buscarTutorial'
+		]);
+
+
+		//Ver Tutorial:
+		Route::get('Ver-Tutorial-{id}', [
+						'uses' => 'TutorialController@verTutorial',
+						'as' =>'verTutorial'
+		]);
+
+
+		//Editar Tutorial:
+		Route::post('Editar-Tutorial', [
+						'uses' => 'TutorialController@editarTutorial',
+						'as' =>'editarTutorial'
+		]);
+
+		//Editar Tutorial multimedia: youtube
+		Route::post('Editar-Tutorial-Youtube', [
+						'uses' => 'TutorialController@editarMultimediaTutorial',
+						'as' =>'editarTutorialMultimedia'
+		]);
+
+		//Eliminar Tutorial
+		Route::post('Eliminar-Tutorial', [
+						'uses' => 'TutorialController@eliminarTutorial',
+						'as' =>'eliminarTutorial'
+		]);
 
 
  });
