@@ -94,7 +94,7 @@
 											 					<select id="str_tipo" name="str_tipo" class="form-control required" onchange="showfieldTipo(this.options[this.selectedIndex].value)">
 											 						<option value="">Seleccione</option>
 											 						<option value="simple">Post Simple</option>
-											 						<option value="imagen">Post con sólo una imágen</option>
+											 						<option value="imagen">Post con sólo una imagen</option>
 											 						<option value="carrusel-imagen">Post con carrusel de imágenes</option>
 											 						<option value="video">Post con video</option>
 											 						<option value="audio">Post con audio</option>
@@ -271,11 +271,11 @@
 
 	  	}else if (name=='imagen'){ 
 
-	  		document.getElementById('div2').innerHTML='<div class="row"><div class="form-group"><div class="col-md-12 col-sm-12"><label>Imágen del Post<small class="text-muted">(Opcional)</small></label><input type="file" id="blb_img1" name="blb_img1" data-btn-text="Buscar Foto" class="custom-file-upload required"><small class="text-muted block">Tamaño máximo: 1Mb (jpg/png) Medidas 1200 x 500</small></div></div></div>';
+	  		document.getElementById('div2').innerHTML='<div class="row"><div class="form-group"><div class="col-md-12 col-sm-12"><label>Imagen del Post<small class="text-muted">(Opcional)</small></label><input type="file" id="blb_img1" name="blb_img1" data-btn-text="Buscar Foto" class="custom-file-upload required"><small class="text-muted block">Tamaño máximo: 1Mb (jpg/png) Medidas 1200 x 500</small></div></div></div>';
 
 		}else if (name=='carrusel-imagen'){ 
 
-	  		document.getElementById('div2').innerHTML='<div class="row"><div class="form-group"><div class="col-md-4 col-sm-4"><label>Imágen del Post N° 1<small class="text-muted">(Opcional)</small></label><input type="file" id="blb_img1" name="blb_img1" data-btn-text="Buscar Foto" class="custom-file-upload required"><small class="text-muted block">Tamaño máximo: 1Mb (jpg/png) Medidas 1200 x 500</small></div><div class="col-md-4 col-sm-4"><label>Imágen del Post N° 2<small class="text-muted">(Opcional)</small></label><input type="file" id="blb_img2" name="blb_img2" data-btn-text="Buscar Foto" class="custom-file-upload required"><small class="text-muted block">Tamaño máximo: 1Mb (jpg/png) Medidas 1200 x 500</small></div><div class="col-md-4 col-sm-4"><label>Imágen del Post N° 3<small class="text-muted">(Opcional)</small></label><input type="file" id="blb_img3" name="blb_img3" data-btn-text="Buscar Foto" class="custom-file-upload"><small class="text-muted block">Tamaño máximo: 1Mb (jpg/png) Medidas 1200 x 500</small></div></div></div>';
+	  		document.getElementById('div2').innerHTML='<div class="row"><div class="form-group"><div class="col-md-4 col-sm-4"><label>Imagen del Post N° 1<small class="text-muted">(Opcional)</small></label><input type="file" id="blb_img1" name="blb_img1" data-btn-text="Buscar Foto" class="custom-file-upload required"><small class="text-muted block">Tamaño máximo: 1Mb (jpg/png) Medidas 1200 x 500</small></div><div class="col-md-4 col-sm-4"><label>Imagen del Post N° 2<small class="text-muted">(Opcional)</small></label><input type="file" id="blb_img2" name="blb_img2" data-btn-text="Buscar Foto" class="custom-file-upload required"><small class="text-muted block">Tamaño máximo: 1Mb (jpg/png) Medidas 1200 x 500</small></div><div class="col-md-4 col-sm-4"><label>Imagen del Post N° 3<small class="text-muted">(Opcional)</small></label><input type="file" id="blb_img3" name="blb_img3" data-btn-text="Buscar Foto" class="custom-file-upload"><small class="text-muted block">Tamaño máximo: 1Mb (jpg/png) Medidas 1200 x 500</small></div></div></div>';
 
 		}else if (name=='video'){ 
 

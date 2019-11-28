@@ -73,7 +73,7 @@
 								<div class="panel-body">
 
 								{!! Form::open(['route' => 'registrarTutorial', 'id' => 'demo-form', '', 'enctype'=>'multipart/form-data', 'class' => 'sky-form boxed ', 'data-success' => 'Se ha creado el Post con éxito','data-toastr-position' => 'top-right']) !!} 										
-
+								{!! csrf_field() !!}
 											<fieldset>
 												
 												<!-- required [php action request] -->
@@ -100,10 +100,37 @@
 												<div class="row">
 													<div class="form-group">
 														<div class="col-md-12 col-sm-12">
+															<label>
+																URL *
+															</label>
+															{!! Form::input('text', 'str_src', '', ['id' => 'str_src', 'class'=> 'form-control required','maxlength'=> '100', 'placeholder' => 'Ejemplo: https://www.youtube.com/watch?v=HNWKLnaM81s']) !!} 
+															<span class="text-muted block">Ingrese la url de Youtube</span>
 
+														</div>
+													</div>
+												</div>												
+
+												<div class="row">
+													<div class="form-group">
+														<div class="col-md-12 col-sm-12">
+															<label>
+																Iframe *
+															</label>
 															<textarea id="str_video" name="str_video" class="form-control required" placeholder="Ejemplo: <iframe class=embed-responsive-item width=560 height=315 src=http://www.youtube.com/embed/W7Las-MJnJo></iframe>" rows="4" cols="350"></textarea>
-															<span class="tooltip tooltip-top-right">Ingrese el link de Youtube</span>
+															<span class="text-muted block">Ingrese el iframe de Youtube</span>
 
+														</div>
+													</div>
+												</div>
+
+												<div class="row">
+													<div class="form-group">
+														<div class="col-md-12 col-sm-12">
+															<label>
+																Miniatura de Youtube *
+															</label>
+															<input type="file" id="blb_img1" name="blb_img1" data-btn-text="Buscar Foto" class="custom-file-upload required">
+															<small class="text-muted block">Tamaño máximo: 1Mb (jpg/png) Medidas 1200 x 500</small>
 														</div>
 													</div>
 												</div>

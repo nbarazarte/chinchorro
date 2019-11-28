@@ -60,11 +60,12 @@ class TutorialController extends Controller
             );
         }
         
-        $this->create($request->all());
+        $idTutorial = $this->create($request->all());
 
         //return redirect($this->redirectPath()); 
         Session::flash('message','¡El tutorial ha sido creado con éxito!');
-        return Redirect::to('/Crear-Tutorial'); 
+        //return Redirect::to('/Crear-Tutorial'); 
+        return Redirect::to('/Ver-Tutorial-'.$idTutorial);
         
     }
 
@@ -79,8 +80,10 @@ class TutorialController extends Controller
         return Validator::make($data, [
                 
             'str_titulo' => 'required|max:255',
-            'str_video' => 'required',   
-            'str_post' => 'required',  
+            'str_video' => 'required',
+            'blb_img1' => 'required',   
+            'str_post' => 'required', 
+            'str_src' => 'required',  
         ]);
     }
 
@@ -93,16 +96,21 @@ class TutorialController extends Controller
     protected function create(array $data)
     {
 
-        $titulo = str_replace(" ","-",$data['str_titulo']);   
-
+        $titulo = str_replace(" ","-",$data['str_titulo']);
+        $img1 = base64_encode(file_get_contents($data['blb_img1'])); 
+        
         $tutorial = Tutorial::create([
 
         'lng_idadmin' =>  Auth::user()->id, 
         'str_titulo' => $titulo,
         'str_post' => $data['str_post'],
+        'str_src' => $data['str_src'],
+        'blb_img1' => $img1,
         'str_video' => $data['str_video'],
-        'str_estatus' => 'inactivo',
+        'str_estatus' => 'activo',
         ]); 
+
+        return $tutorial->id;
     }
 
     /**
@@ -116,7 +124,7 @@ class TutorialController extends Controller
         $tutoriales = DB::table('tbl_tutorial as p')
                 ->join('tbl_admin as adm', 'adm.id', '=', 'p.lng_idadmin')
                 ->where('p.bol_eliminado', '=' ,0)
-                ->select('p.id as idpost','p.str_estatus','adm.name as usuario','adm.blb_img as img_usuario','p.str_titulo', 'p.str_post', 'p.str_video', 'p.created_at as fecha')
+                ->select('p.id as idpost','p.str_estatus','adm.name as usuario','adm.blb_img as img_usuario','p.str_titulo', 'p.str_post', 'p.str_video', 'p.blb_img1','p.created_at as fecha')
                 ->orderBy('p.id','asc')
                 ->get();
 
@@ -147,7 +155,7 @@ class TutorialController extends Controller
             $query->where('p.bol_eliminado', '=', 0);
         })
 
-        ->select( 'p.id as idpost','p.str_estatus', 'p.created_at as fecha','p.str_titulo', 'p.str_post','p.str_video')
+        ->select( 'p.id as idpost','p.str_estatus', 'p.created_at as fecha','p.str_titulo', 'p.str_post','p.str_video','p.str_src','p.blb_img1')
 
         ->orderBy('p.id', 'desc')
         ->get(); 
@@ -177,6 +185,12 @@ class TutorialController extends Controller
         $tutorial = Tutorial::find($request->id);
         $tutorial->fill($request->all());
         $tutorial->save();
+
+        if(!empty($request->blb_img1) ) {
+
+            $blb_img1 = base64_encode(file_get_contents($request->blb_img1));
+            $publicacion = DB::update("update tbl_tutorial set blb_img1 = '".$blb_img1."' where id = ".$request->id);
+        }
 
         Session::flash('message','¡Se han editado los datos del tutorial con éxito!');
         return Redirect::to('/Ver-Tutorial-'.$request->id); 

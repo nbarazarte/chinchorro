@@ -21,5 +21,19 @@ class Tutorial extends Model
      *
      * @var array
      */
-    protected $fillable = ['lng_idadmin','str_estatus','str_titulo','str_post','str_video','bol_eliminado'];
+    protected $fillable = ['lng_idadmin','str_estatus','blb_img1','str_titulo','str_post','str_video','str_src','bol_eliminado'];
+
+    /**
+     * The attributes excluded from the model's JSON form.
+     *
+     * @var array
+     */
+    protected $hidden = ['blb_img1'];    
+        
+    public function setBlbimgAttribute($valor){
+                
+        if(!empty($valor)){          
+            $this->attributes['blb_img1'] = base64_encode(file_get_contents($valor));                                
+        }    
+    }     
 }

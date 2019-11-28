@@ -93,10 +93,23 @@
 
 														<div class="panel-body noradius padding-10">
 
-														  	<center>
-																{!! html_entity_decode($tutorial->str_video) !!}
-														  	</center>
+															<div class="form-group">
 
+																<div class="col-md-6">
+																	<center>
+																		{!! html_entity_decode($tutorial->str_video) !!}
+																  	</center>
+																</div>
+
+																<div class="col-md-6">
+																	<center>
+																	  	<figure class="margin-bottom-10"><!-- image -->
+																	  		
+																	  		<img src="data:image/jpeg;base64,{{ $tutorial->blb_img1 }}" alt="" title="" width="410">
+																	  	</figure>
+																  	</center>
+																</div>																
+															</div>
 														</div>
 													</section>
 
@@ -117,6 +130,13 @@
 													</div>
 
 													<div class="form-group">
+														<label class="col-md-3 control-label" for="">URL</label>
+														<div class="col-md-8">
+															<input type="text" readonly="yes" class="form-control" id="" value="{{ str_replace("-"," ",$tutorial->str_src)}}">
+														</div>
+													</div>
+
+													<div class="form-group">
 														<label class="col-md-3 control-label" for="">Descripción</label>
 														<div class="col-md-8">
 															{!! html_entity_decode($tutorial->str_post) !!}
@@ -132,7 +152,8 @@
 										<!-- Editar -->
 										<div id="editar" class="tab-pane">
 
-											{!! Form::open(['route' => 'editarTutorial', 'id' => 'demo-form', '', 'enctype'=>'multipart/form-data', 'class' => 'form-horizontal ', 'data-success' => 'Se han editado los datos personales con éxito','data-toastr-position' => 'top-right', 'onsubmit' => 'location.reload()']) !!} 												
+											{!! Form::open(['route' => 'editarTutorial', 'id' => 'demo-form', '', 'enctype'=>'multipart/form-data', 'class' => 'form-horizontal ', 'data-success' => 'Se han editado los datos personales con éxito','data-toastr-position' => 'top-right', 'onsubmit' => 'location.reload()']) !!} 	
+											{!! csrf_field() !!}											
 												<h4>Datos del Tutorial</h4>
 
 												{!! Form::input('hidden', 'id', $tutorial->idpost, ['id' => 'id', 'class'=> 'form-control required','maxlength'=> '10', 'readonly' ]) !!}  
@@ -163,7 +184,23 @@
 													</div>
 
 													<div class="form-group">
-														<label class="col-md-3 control-label" for="">Post</label>
+														<label class="col-md-3 control-label" for="str_nombre">URL</label>
+														<div class="col-md-8">
+															{!! Form::input('text', 'str_src', str_replace("-"," ",$tutorial->str_src), ['id' => 'str_src', 'class'=> 'form-control required','maxlength'=> '255']) !!} 
+														</div>
+													</div>
+
+													<div class="form-group">
+														<label class="col-md-3 control-label">Miniatura de Youtube *</label>
+														<div class="col-md-8">
+{!! Form::file('blb_img1',['id' => 'blb_img1','data-btn-text' =>'Buscar Fotox', 'class' => 'custom-file-upload required']) !!}
+			<small class="text-muted block">Tamaño máximo: 1Mb (jpg/png)</small>
+														</div>
+													</div>
+
+
+													<div class="form-group">
+														<label class="col-md-3 control-label" for="">Descripción del video</label>
 														<div class="col-md-8">
 															<textarea name="str_post" class="summernote form-control required" data-height="200" data-lang="en-US">
 																{!! html_entity_decode($tutorial->str_post) !!}
