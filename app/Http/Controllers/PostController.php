@@ -343,6 +343,15 @@ class PostController extends Controller
     public function editarMultimedia(Request $request)
     {
     
+        $validator = $this->validatorImagen($request->all());
+
+        if ($validator->fails()) {
+            $this->throwValidationException(
+                $request, $validator
+            );
+        }
+
+
         $blb_img1 = base64_encode(file_get_contents($request->blb_img1));
         $publicacion = DB::update("update tbl_post set str_tipo = '".$request->str_tipo."', blb_img1 = '".$blb_img1."' where id = ".$request->id);
 
@@ -351,9 +360,31 @@ class PostController extends Controller
 
     }
 
+    /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function validatorImagen(array $data)
+    {
+        return Validator::make($data, [
+                
+            'blb_img1' => 'required' 
+        ]);
+    }    
+
     public function editarMultimedia2(Request $request)
     {
         
+        $validator = $this->validatorCarrusel($request->all());
+
+        if ($validator->fails()) {
+            $this->throwValidationException(
+                $request, $validator
+            );
+        }
+
         $blb_img1 = base64_encode(file_get_contents($request->blb_img1));
         $blb_img2 = base64_encode(file_get_contents($request->blb_img2));
         $blb_img3 = base64_encode(file_get_contents($request->blb_img3));
@@ -365,9 +396,34 @@ class PostController extends Controller
 
     }
 
+    /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function validatorCarrusel(array $data)
+    {
+        return Validator::make($data, [
+                
+            'blb_img1' => 'required',
+            'blb_img2' => 'required',
+            'blb_img3' => 'required',    
+
+        ]);
+    }    
+
     public function editarMultimedia3(Request $request)
     {
         
+        $validator = $this->validatorAudioVideo($request->all());
+
+        if ($validator->fails()) {
+            $this->throwValidationException(
+                $request, $validator
+            );
+        }
+
         $post = Post::find($request->id);
         $post->fill($request->all());
         $post->save();
@@ -377,6 +433,38 @@ class PostController extends Controller
 
     }
 
+    /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function validatorAudioVideo(array $data)
+    {
+        
+        //dd($data);
+        //echo $data['str_tipo'];
+        //die();
+
+        if($data['str_tipo'] == 'video'){
+
+            return Validator::make($data, [
+                    
+                'str_video' => 'required',
+       
+            ]);
+
+        }else{
+
+            return Validator::make($data, [
+                    
+                'str_audio' => 'required',
+       
+            ]);            
+        }
+
+    } 
+    
     public function editarMultimedia4(Request $request)
     {
         

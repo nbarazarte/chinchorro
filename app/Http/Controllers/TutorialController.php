@@ -200,6 +200,14 @@ class TutorialController extends Controller
     public function editarMultimediaTutorial(Request $request)
     {
         
+        $validator = $this->validatorVideo($request->all());
+
+        if ($validator->fails()) {
+            $this->throwValidationException(
+                $request, $validator
+            );
+        }
+
         $tutorial = Tutorial::find($request->id);
         $tutorial->fill($request->all());
         $tutorial->save();
@@ -208,6 +216,21 @@ class TutorialController extends Controller
         return Redirect::to('/Ver-Tutorial-'.$request->id); 
 
     }
+
+    /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function validatorVideo(array $data)
+    {
+        return Validator::make($data, [
+                
+            'str_video' => 'required',  
+
+        ]);
+    }  
 
     public function eliminarTutorial(Request $request)
     {
