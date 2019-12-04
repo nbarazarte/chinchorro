@@ -73,145 +73,51 @@ Route::group(['middleware' => 'auth'], function () {
 
 	 });
 
-	//Para el Equipo de Ilernus:
-
-		//Crear Director o Gerente:
-		Route::get('Crear-Equipo', [
-						'uses' => 'EquipoIlernusController@crearCuenta',
-						'as' =>'registrarPi'
-		]);
-
-		Route::post('Crear-Equipo', 'EquipoIlernusController@postCrearCuenta');
-
-		//Buscar Director o Gerente:
-		Route::get('Buscar-Equipo', [
-						'uses' => 'EquipoIlernusController@buscarCuenta',
-						'as' =>'buscarCuentaPi'
-		]);
-
-		//Ver Director o Gerente:
-		Route::get('Ver-Equipo-{id}', [
-						'uses' => 'EquipoIlernusController@verCuenta',
-						'as' =>'cuentaPi'
-		]);
-
-		//Editar Director o Gerente
-		Route::post('Editar-Equipo', [
-						'uses' => 'EquipoIlernusController@editarCuenta',
-						'as' =>'editarCuentaPi'
-		]);
-
-		//Editar Director o Gerente
-		Route::post('Editar-Imagen-Equipo', [
-						'uses' => 'EquipoIlernusController@editarImagen',
-						'as' =>'editarImagenPi'
-		]);
-
-		//Eliminar Director o Gerente
-		Route::post('Eliminar-Cuenta-Equipo', [
-						'uses' => 'EquipoIlernusController@eliminarCuenta',
-						'as' =>'eliminarCuentaPi'
-		]);
-
-		//Eliminar Director o Gerente
-		Route::post('Eliminar-Imagen-Persona', [
-						'uses' => 'EquipoIlernusController@eliminarImagen',
-						'as' =>'eliminarImagenPi'
-		]);
-
-	//Para los Instructores de Ilernus:
-
-		//Crear Instructores:
-		Route::get('Crear-Instructor', [
-						'uses' => 'InstructoresIlernusController@crearCuenta',
-						'as' =>'registrarIns'
-		]);
-
-		Route::post('Crear-Instructor', 'InstructoresIlernusController@postCrearCuenta');
-
-		//Buscar Instructores:
-		Route::get('Buscar-Instructor', [
-						'uses' => 'InstructoresIlernusController@buscarCuenta',
-						'as' =>'buscarCuentaIns'
-		]);
-
-		//Ver Instructores:
-		Route::get('Ver-Instructor-{id}', [
-						'uses' => 'InstructoresIlernusController@verCuenta',
-						'as' =>'cuentaIns'
-		]);
-
-		//Editar Instructores
-		Route::post('Editar-Instructor', [
-						'uses' => 'InstructoresIlernusController@editarCuenta',
-						'as' =>'editarCuentaIns'
-		]);
-
-		//Editar Instructores
-		Route::post('Editar-Imagen-Instructor', [
-						'uses' => 'InstructoresIlernusController@editarImagen',
-						'as' =>'editarImagenIns'
-		]);
-
-		//Eliminar Instructores
-		Route::post('Eliminar-Cuenta-Instructor', [
-						'uses' => 'InstructoresIlernusController@eliminarCuenta',
-						'as' =>'eliminarCuentaIns'
-		]);
-
-		//Eliminar Instructores
-		Route::post('Eliminar-Imagen-Instructor', [
-						'uses' => 'InstructoresIlernusController@eliminarImagen',
-						'as' =>'eliminarImagenIns'
-		]);
-
-	//Para los Autores de Blog:
+	//Para los Autores:
 
 		//Crear Autor:
-		Route::get('Crear-Autor-Blog', [
+		Route::get('Crear-Autor', [
 						'uses' => 'AutoresIlernusController@crearCuenta',
 						'as' =>'registrarAu'
 		]);
 
-		Route::post('Crear-Autor-Blog', 'AutoresIlernusController@postCrearCuenta');
+		Route::post('Crear-Autor', 'AutoresIlernusController@postCrearCuenta');
 
 		//Buscar Autor:
-		Route::get('Buscar-Autor-Blog', [
+		Route::get('Buscar-Autor', [
 						'uses' => 'AutoresIlernusController@buscarCuenta',
 						'as' =>'buscarCuentaAu'
 		]);
 
 		//Ver Autor:
-		Route::get('Ver-Autor-Blog-{id}', [
+		Route::get('Ver-Autor-{id}', [
 						'uses' => 'AutoresIlernusController@verCuenta',
 						'as' =>'cuentaAu'
 		]);
 
 		//Editar Autor
-		Route::post('Editar-Autor-Blog', [
+		Route::post('Editar-Autor', [
 						'uses' => 'AutoresIlernusController@editarCuenta',
 						'as' =>'editarCuentaAu'
 		]);
 
 		//Editar Autor
-		Route::post('Editar-Imagen-Autor-Blog', [
+		Route::post('Editar-Imagen-Autor', [
 						'uses' => 'AutoresIlernusController@editarImagen',
 						'as' =>'editarImagenAu'
 		]);
 
 		//Eliminar Autor
-		Route::post('Eliminar-Cuenta-Autor-Blog', [
+		Route::post('Eliminar-Cuenta-Autor', [
 						'uses' => 'AutoresIlernusController@eliminarCuenta',
 						'as' =>'eliminarCuentaAu'
 		]);
 
 		//Eliminar Imágen Autor
-		Route::post('Eliminar-Imagen-Autor-Blog', [
+		Route::post('Eliminar-Imagen-Autor', [
 						'uses' => 'AutoresIlernusController@eliminarImagen',
 						'as' =>'eliminarImagenAu'
 		]);
-
-
 
 	//Para los Post:
 
@@ -223,14 +129,11 @@ Route::group(['middleware' => 'auth'], function () {
 
 		Route::post('Crear-Post', 'PostController@postCrearPost');
 
-
-
 		//Buscar Post:
 		Route::get('Buscar-Post', [
 						'uses' => 'PostController@buscarPost',
 						'as' =>'buscarPost'
 		]);
-
 
 		//Ver Post:
 		Route::get('Ver-Post-{id}', [
@@ -238,13 +141,11 @@ Route::group(['middleware' => 'auth'], function () {
 						'as' =>'verPost'
 		]);
 
-
 		//Editar Post
 		Route::post('Editar-Post', [
 						'uses' => 'PostController@editarPost',
 						'as' =>'editarPost'
 		]);
-
 
 		//Editar Post multimedia: simple
 		Route::post('Editar-Post-Multimedia4', [
@@ -283,6 +184,72 @@ Route::group(['middleware' => 'auth'], function () {
 		]);
 
 /********************************************************/
+
+	//Para las Noticias:
+
+		//Crear Noticias:
+		Route::get('Crear-Noticias', [
+						'uses' => 'NoticiasController@crearNoticia',
+						'as' =>'registrarNoticia'
+		]);
+
+		Route::post('Crear-Noticias', 'NoticiasController@postCrearNoticia');
+
+		//Buscar Noticia:
+		Route::get('Buscar-Noticias', [
+						'uses' => 'NoticiasController@buscarNoticia',
+						'as' =>'buscarNoticia'
+		]);
+
+		//Ver Noticia:
+		Route::get('Ver-Noticia-{id}', [
+						'uses' => 'NoticiasController@verNoticia',
+						'as' =>'verNoticia'
+		]);
+
+		//Editar Noticia
+		Route::post('Editar-Noticia', [
+						'uses' => 'NoticiasController@editarNoticia',
+						'as' =>'editarNoticia'
+		]);
+
+		//Editar Noticia multimedia: simple
+		Route::post('Editar-Noticia-Multimedia4', [
+						'uses' => 'NoticiasController@editarMultimedia4',
+						'as' =>'editarMu4Noticia'
+		]);
+
+		//Editar Noticia multimedia: una imagen
+		Route::post('Editar-Noticia-Multimedia', [
+						'uses' => 'NoticiasController@editarMultimedia',
+						'as' =>'editarMuNoticia'
+		]);
+
+		//Editar Noticia multimedia: carrusel
+		Route::post('Editar-Noticia-Multimedia2', [
+						'uses' => 'NoticiasController@editarMultimedia2',
+						'as' =>'editarMu2Noticia'
+		]);
+
+		//Editar Noticia multimedia: audio y video
+		Route::post('Editar-Noticia-Multimedia3', [
+						'uses' => 'NoticiasController@editarMultimedia3',
+						'as' =>'editarMu3Noticia'
+		]);
+
+		//Editar Noticia Etiquetas:
+		Route::post('Editar-Noticia-Etiquetas', [
+						'uses' => 'NoticiasController@editarEtiquetas',
+						'as' =>'editarEtiquetasNoticias'
+		]);
+
+		//Eliminar Noticia
+		Route::post('Eliminar-Noticia', [
+						'uses' => 'NoticiasController@eliminarNoticias',
+						'as' =>'eliminarNoticia'
+		]);
+/********************************************************/
+
 	//Para los tutoriales:
 
 		//Crear Tutorial:
@@ -299,13 +266,11 @@ Route::group(['middleware' => 'auth'], function () {
 						'as' =>'buscarTutorial'
 		]);
 
-
 		//Ver Tutorial:
 		Route::get('Ver-Tutorial-{id}', [
 						'uses' => 'TutorialController@verTutorial',
 						'as' =>'verTutorial'
 		]);
-
 
 		//Editar Tutorial:
 		Route::post('Editar-Tutorial', [
@@ -324,8 +289,6 @@ Route::group(['middleware' => 'auth'], function () {
 						'uses' => 'TutorialController@eliminarTutorial',
 						'as' =>'eliminarTutorial'
 		]);
-
-
  });
 
 Route::get('Recuperar-Clave', [

@@ -4,11 +4,11 @@
 
 @include('menu')
 
-	@foreach ($posts as $post)
+	@foreach ($noticias as $noticia)
 
 	@endforeach
 
-	@if($post->str_tipo == 'simple')
+	@if($noticia->str_tipo == 'simple')
 
 		<style type="text/css">
 
@@ -22,7 +22,7 @@
 
 	@endif
 
-	@if($post->str_tipo == 'imagen')
+	@if($noticia->str_tipo == 'imagen')
 
 		<style type="text/css">
 
@@ -36,7 +36,7 @@
 
 	@endif
 
-	@if($post->str_tipo == 'carrusel-imagen')
+	@if($noticia->str_tipo == 'carrusel-imagen')
 
 		<style type="text/css">
 
@@ -50,7 +50,7 @@
 
 	@endif
 
-	@if($post->str_tipo == 'audio')
+	@if($noticia->str_tipo == 'audio')
 
 		<style type="text/css">
 
@@ -64,7 +64,7 @@
 
 	@endif
 
-	@if($post->str_tipo == 'video')
+	@if($noticia->str_tipo == 'video')
 
 		<style type="text/css">
 
@@ -88,11 +88,11 @@
 
 				<!-- page title -->
 				<header id="page-header">
-					<h1>Ver Post</h1>
+					<h1>Ver Noticia</h1>
 					<ol class="breadcrumb">
 						<li><a href="{{ route('home')}}">Dashboard</a></li>
-						<li><a href="{{ route('buscarPost')}}">Buscar Post</a></li>
-						<li class="active">Ver Post</li>
+						<li><a href="{{ route('buscarNoticia')}}">Buscar Noticia</a></li>
+						<li class="active">Ver Noticia</li>
 					</ol>
 				</header>
 
@@ -139,7 +139,7 @@
 											<a href="#consultar" data-toggle="tab"><i class="fa fa-address-card-o" aria-hidden="true"></i>Ver</a>
 										</li>
 										<li>
-											<a href="#editar" data-toggle="tab"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar Post</a>
+											<a href="#editar" data-toggle="tab"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar Noticia</a>
 										</li>
 
 										<li>
@@ -162,42 +162,42 @@
 										<div id="consultar" class="tab-pane active">
 
 											<div class="form-horizontal">
-												<h4>Datos del Post</h4>
+												<h4>Datos de la Noticia</h4>
 
 													<section class="panel">
 
 														<div class="panel-body noradius padding-10">
 
-															  @if ($post->str_tipo == 'simple')
+															  @if ($noticia->str_tipo == 'simple')
 															  	<center>
 																  	<figure class="margin-bottom-10"><!-- image -->
 																  		<i class="fa fa-newspaper-o" aria-hidden="true"></i>
 																  	</figure>
 															  	</center>						  	
-															  @elseif ($post->str_tipo == 'audio')
+															  @elseif ($noticia->str_tipo == 'audio')
 															  	<center>
-																  	{!! html_entity_decode($post->str_audio) !!} 
+																  	{!! html_entity_decode($noticia->str_audio) !!} 
 															  	</center>
-															  @elseif ($post->str_tipo == 'video')
+															  @elseif ($noticia->str_tipo == 'video')
 															  	<center>
-																	{!! html_entity_decode($post->str_video) !!}
+																	{!! html_entity_decode($noticia->str_video) !!}
 															  	</center>
-															  @elseif ($post->str_tipo == 'carrusel-imagen')
+															  @elseif ($noticia->str_tipo == 'carrusel-imagen')
 															  	<center>
 																  	<figure class="margin-bottom-10"><!-- image -->
 
 																  		<div class="row">
 																  			<div class="col-md-4">
-																  				<img class="img-responsive" src="data:image/jpeg;base64,{{ $post->blb_img1 }}" alt="" title="" width="410">
+																  				<img class="img-responsive" src="data:image/jpeg;base64,{{ $noticia->blb_img1 }}" alt="" title="" width="410">
 																  			</div>
 																  			<div class="col-md-4">
-																  				<img class="img-responsive" src="data:image/jpeg;base64,{{ $post->blb_img2 }}" alt="" title="" width="410">
+																  				<img class="img-responsive" src="data:image/jpeg;base64,{{ $noticia->blb_img2 }}" alt="" title="" width="410">
 																  			</div>
 
-																  			@if(!empty($post->blb_img3))
+																  			@if(!empty($noticia->blb_img3))
 
 																  			<div class="col-md-4">
-																  				<img class="img-responsive" src="data:image/jpeg;base64,{{ $post->blb_img3 }}" alt="" title="" width="410">
+																  				<img class="img-responsive" src="data:image/jpeg;base64,{{ $noticia->blb_img3 }}" alt="" title="" width="410">
 																  			</div>
 
 																  			@endif
@@ -205,11 +205,11 @@
 
 																  	</figure>
 															  	</center>
-															  @elseif ($post->str_tipo == 'imagen')
+															  @elseif ($noticia->str_tipo == 'imagen')
 															  	<center>
 																  	<figure class="margin-bottom-10"><!-- image -->
 																  		
-																  		<img src="data:image/jpeg;base64,{{ $post->blb_img1 }}" alt="" title="" width="410">
+																  		<img src="data:image/jpeg;base64,{{ $noticia->blb_img1 }}" alt="" title="" width="410">
 																  	</figure>
 															  	</center>
 															  @endif
@@ -226,44 +226,44 @@
 													<div class="form-group">
 														<label class="col-md-3 control-label" for="">Estatus</label>
 														<div class="col-md-8">
-															<input type="text" readonly="yes" class="form-control" id="" value="{{ str_replace("-"," ",$post->str_estatus)}}">
+															<input type="text" readonly="yes" class="form-control" id="" value="{{ str_replace("-"," ",$noticia->str_estatus)}}">
 														</div>
 													</div>
 
 													<div class="form-group">
 														<label class="col-md-3 control-label" for="">Título</label>
 														<div class="col-md-8">
-															<input type="text" readonly="yes" class="form-control" id="" value="{{ str_replace("-"," ",$post->str_titulo)}}">
+															<input type="text" readonly="yes" class="form-control" id="" value="{{ str_replace("-"," ",$noticia->str_titulo)}}">
 														</div>
 													</div>
 
 													<div class="form-group">
 														<label class="col-md-3 control-label" for="">Tipo</label>
 														<div class="col-md-8">
-															<input type="text" readonly="yes" class="form-control" id="" value="{{ $post->str_tipo }}">
+															<input type="text" readonly="yes" class="form-control" id="" value="{{ $noticia->str_tipo }}">
 														</div>
 													</div>
 													<div class="form-group">
 														<label class="col-md-3 control-label" for="">Autor</label>
 														<div class="col-md-8">
-															<input type="text" readonly="yes" class="form-control" id="" value="{{ $post->autor }}">
+															<input type="text" readonly="yes" class="form-control" id="" value="{{ $noticia->autor }}">
 														</div>
 													</div>
 
 
 													<div class="form-group">
-														<label class="col-md-3 control-label" for="">Post (resumen)</label>
+														<label class="col-md-3 control-label" for="">Noticia (resumen)</label>
 														<div class="col-md-8">
 															
-															{!! html_entity_decode($post->str_post_resumen) !!}
+															{!! html_entity_decode($noticia->str_post_resumen) !!}
 
 														</div>
 													</div>
 
 													<div class="form-group">
-														<label class="col-md-3 control-label" for="">Post</label>
+														<label class="col-md-3 control-label" for="">Noticia</label>
 														<div class="col-md-8">
-															{!! html_entity_decode($post->str_post) !!}
+															{!! html_entity_decode($noticia->str_post) !!}
 														</div>
 													</div>	
 
@@ -276,10 +276,10 @@
 										<!-- Editar -->
 										<div id="editar" class="tab-pane">
 
-											{!! Form::open(['route' => 'editarPost', 'id' => 'demo-form', '', 'enctype'=>'multipart/form-data', 'class' => 'form-horizontal ', 'data-success' => 'Se han editado los datos personales con éxito','data-toastr-position' => 'top-right', 'onsubmit' => 'location.reload()']) !!} 												
-												<h4>Datos del Post</h4>
+											{!! Form::open(['route' => 'editarNoticia', 'id' => 'demo-form', '', 'enctype'=>'multipart/form-data', 'class' => 'form-horizontal ', 'data-success' => 'Se han editado los datos personales con éxito','data-toastr-position' => 'top-right', 'onsubmit' => 'location.reload()']) !!} 												
+												<h4>Datos de la Noticia</h4>
 
-												{!! Form::input('hidden', 'id', $post->idpost, ['id' => 'id', 'class'=> 'form-control required','maxlength'=> '10', 'readonly' ]) !!}  
+												{!! Form::input('hidden', 'id', $noticia->idpost, ['id' => 'id', 'class'=> 'form-control required','maxlength'=> '10', 'readonly' ]) !!}  
 
 												<fieldset>
 
@@ -291,7 +291,7 @@
 
 																@foreach ($tipoEstatus as $value)
 																				
-																<option value="{{$value}}" <?php if ($value == $post->str_estatus) {?> selected <?php }?> >{{$value}}</option>
+																<option value="{{$value}}" <?php if ($value == $noticia->str_estatus) {?> selected <?php }?> >{{$value}}</option>
 
 																@endforeach
 
@@ -302,7 +302,7 @@
 													<div class="form-group">
 														<label class="col-md-3 control-label" for="str_nombre">Título</label>
 														<div class="col-md-8">
-															{!! Form::input('text', 'str_titulo', str_replace("-"," ",$post->str_titulo), ['id' => 'str_nombre', 'class'=> 'form-control required','maxlength'=> '255']) !!} 
+															{!! Form::input('text', 'str_titulo', str_replace("-"," ",$noticia->str_titulo), ['id' => 'str_nombre', 'class'=> 'form-control required','maxlength'=> '255']) !!} 
 														</div>
 													</div>
 
@@ -314,7 +314,7 @@
 
 																@foreach ($autores as $clave => $value)
 																				
-																<option value="{{$clave}}" <?php if ($value == $post->autor) {?> selected <?php }?> >{{$value}}</option>
+																<option value="{{$clave}}" <?php if ($value == $noticia->autor) {?> selected <?php }?> >{{$value}}</option>
 
 																@endforeach
 
@@ -324,22 +324,22 @@
 
 
 													<div class="form-group">
-														<label class="col-md-3 control-label" for="">Post (resumen)</label>
+														<label class="col-md-3 control-label" for="">Noticia (resumen)</label>
 														<div class="col-md-8">
 															
 															
 															<textarea name="str_post_resumen" class="summernote form-control required" data-height="200" data-lang="en-US">
-																{!! html_entity_decode($post->str_post_resumen) !!}
+																{!! html_entity_decode($noticia->str_post_resumen) !!}
 															</textarea>
 
 														</div>
 													</div>
 
 													<div class="form-group">
-														<label class="col-md-3 control-label" for="">Post</label>
+														<label class="col-md-3 control-label" for="">Noticia</label>
 														<div class="col-md-8">
 															<textarea name="str_post" class="summernote form-control required" data-height="200" data-lang="en-US">
-																{!! html_entity_decode($post->str_post) !!}
+																{!! html_entity_decode($noticia->str_post) !!}
 															</textarea>
 														</div>
 													</div>	
@@ -348,7 +348,7 @@
 
 												<div class="row">
 													<div class="col-md-9 col-md-offset-3">
-														{!! Form::submit('MODIFICAR POST', ['class' => 'btn btn-3d btn-teal btn-xlg btn-block margin-top-30']) !!}
+														{!! Form::submit('MODIFICAR NOTICIA', ['class' => 'btn btn-3d btn-teal btn-xlg btn-block margin-top-30']) !!}
 													</div>
 												</div>												
 
@@ -358,10 +358,10 @@
 
 										<div id="editarEtiquetas" class="tab-pane">
 
-											{!! Form::open(['route' => 'editarEtiquetas', 'id' => 'demo-form', '', 'enctype'=>'multipart/form-data', 'class' => 'form-horizontal ', 'data-success' => 'Se han editado las etiquetas con éxito','data-toastr-position' => 'top-right', 'onsubmit' => 'location.reload()']) !!} 												
+											{!! Form::open(['route' => 'editarEtiquetasNoticias', 'id' => 'demo-form', '', 'enctype'=>'multipart/form-data', 'class' => 'form-horizontal ', 'data-success' => 'Se han editado las etiquetas con éxito','data-toastr-position' => 'top-right', 'onsubmit' => 'location.reload()']) !!} 												
 												
 
-												{!! Form::input('hidden', 'id', $post->idpost, ['id' => 'id', 'class'=> 'form-control required','maxlength'=> '10', 'readonly' ]) !!}  										
+												{!! Form::input('hidden', 'id', $noticia->idpost, ['id' => 'id', 'class'=> 'form-control required','maxlength'=> '10', 'readonly' ]) !!}  										
 
 											<div class="row">
 
@@ -441,7 +441,7 @@
 																
 																@foreach ($tipopost as $value)
 																				
-																<option value="{{$value}}" <?php if ($value == $post->str_tipo) {?> selected <?php }?> >{{$value}}</option>
+																<option value="{{$value}}" <?php if ($value == $noticia->str_tipo) {?> selected <?php }?> >{{$value}}</option>
 
 																@endforeach
 															</select>
@@ -453,31 +453,31 @@
 
 												<div id="simple">
 													
-													@include('post.multimediaSimple')
+													@include('noticias.multimediaSimple')
 
 												</div>
 
 												<div id="imagen">
 													
-													@include('post.multimediaImagen')
+													@include('noticias.multimediaImagen')
 
 												</div>
 
 												<div id="carrusel-imagen">
 													
-													@include('post.multimediaCarruselImagen')
+													@include('noticias.multimediaCarruselImagen')
 	
 												</div>
 
 												<div id="audio">
 
-													@include('post.multimediaAudio')
+													@include('noticias.multimediaAudio')
 
 												</div>
 
 												<div id="video">
 													
-													@include('post.multimediaVideo')
+													@include('noticias.multimediaVideo')
 
 												</div>
 
@@ -486,14 +486,14 @@
 										<div id="eliminar" class="tab-pane">
 
 
-												{!! Form::open(['route' => 'eliminarPost', 'id' => 'clave-form', '', 'enctype'=>'multipart/form-data', 'class' => 'form-horizontal ', 'data-success' => 'Se ha eliminado el post con éxito','data-toastr-position' => 'top-right', 'onsubmit' => '']) !!} 	
-												<h4>Eliminar Post</h4>
-												{!! Form::input('hidden', 'id', $post->idpost, ['id' => 'id', 'class'=> 'form-control required','maxlength'=> '10', 'readonly' ]) !!}  
+												{!! Form::open(['route' => 'eliminarNoticia', 'id' => 'clave-form', '', 'enctype'=>'multipart/form-data', 'class' => 'form-horizontal ', 'data-success' => 'Se ha eliminado el post con éxito','data-toastr-position' => 'top-right', 'onsubmit' => '']) !!} 	
+												<h4>Eliminar Noticia</h4>
+												{!! Form::input('hidden', 'id', $noticia->idpost, ['id' => 'id', 'class'=> 'form-control required','maxlength'=> '10', 'readonly' ]) !!}  
 
 
 												<div class="row">
 													<div class="col-md-9 col-md-offset-3">
-														{!! Form::submit('ELIMINAR POST', ['class' => 'btn btn-3d btn-teal btn-xlg btn-block margin-top-30']) !!}
+														{!! Form::submit('ELIMINAR NOTICIA', ['class' => 'btn btn-3d btn-teal btn-xlg btn-block margin-top-30']) !!}
 													</div>
 												</div>
 
@@ -526,15 +526,16 @@
 		if(categoria[0].checked == true){
 
 		    var x = document.getElementsByName("str_categoria[]");
-		    var i;
+
 		    for (i = 0; i < x.length; i++) {
+
 		        if (x[i].type == "checkbox") {
 		            x[i].checked = true;
 		        }
 		    }
 
 		}else{
-
+			
 		    var x = document.getElementsByName("str_categoria[]");
 		    var i;
 		    for (i = 0; i < x.length; i++) {

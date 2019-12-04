@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Post;
-use App\Categoria;
+use App\Noticias;
+use App\CategoriasNoticias;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
@@ -16,7 +16,7 @@ use DB;
 use Validator;
 use Illuminate\Support\Facades\Auth;
 
-class PostController extends Controller
+class NoticiasController extends Controller
 {
    
  /**
@@ -34,7 +34,7 @@ class PostController extends Controller
      *
      * @return Response
      */
-    public function crearPost()
+    public function crearNoticia()
     {
 
         $autores = DB::table('tbl_autores')
@@ -56,7 +56,7 @@ class PostController extends Controller
 
         //dd($etiquetas);die(); 
 
-        return \View::make('post.crearPost', compact('autores','etiquetas'));
+        return \View::make('noticias.crearNoticia', compact('autores','etiquetas'));
     }
 
   /**
@@ -65,7 +65,7 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function postCrearPost(Request $request)
+    public function postCrearNoticia(Request $request)
     {
 
         $validator = $this->validator($request->all());
@@ -79,8 +79,8 @@ class PostController extends Controller
         $this->create($request->all());
 
         //return redirect($this->redirectPath()); 
-        Session::flash('message','¡El post ha sido creado con éxito!');
-        return Redirect::to('/Crear-Post'); 
+        Session::flash('message','¡La noticia ha sido creado con éxito!');
+        return Redirect::to('/Crear-Noticias'); 
         
     }
 
@@ -119,7 +119,7 @@ class PostController extends Controller
             //echo Auth::user()->id;
             //die();
 
-            $post = Post::create([
+            $post = Noticias::create([
 
             'lng_idadmin' =>  Auth::user()->id,    
             'str_tipo' =>  $data['str_tipo'],
@@ -134,7 +134,7 @@ class PostController extends Controller
 
             $img1 = base64_encode(file_get_contents($data['blb_img1']));      
 
-            $post = Post::create([
+            $post = Noticias::create([
 
             'lng_idadmin' =>  Auth::user()->id,
             'str_tipo' =>  $data['str_tipo'],
@@ -158,7 +158,7 @@ class PostController extends Controller
                 $img3 = base64_encode(file_get_contents($data['blb_img3']));
             } 
 
-            $post = Post::create([
+            $post = Noticias::create([
 
             'lng_idadmin' =>  Auth::user()->id,
             'str_tipo' =>  $data['str_tipo'],
@@ -174,7 +174,7 @@ class PostController extends Controller
 
         }else if($data['str_tipo'] == 'video'){
 
-            $post = Post::create([
+            $post = Noticias::create([
 
             'lng_idadmin' =>  Auth::user()->id, 
             'str_tipo' =>  $data['str_tipo'],
@@ -188,7 +188,7 @@ class PostController extends Controller
 
         }else if($data['str_tipo'] == 'audio'){
 
-            $post = Post::create([
+            $post = Noticias::create([
 
             'lng_idadmin' =>  Auth::user()->id,    
             'str_tipo' =>  $data['str_tipo'],
@@ -215,8 +215,8 @@ class PostController extends Controller
             
             for ($i = 0; $i <= $total_categorias - 1; $i++)
             {
-                $categoriasPost = Categoria::create([
-                    'lng_idpost' => $lastInsertedId,
+                $categoriasPost = CategoriasNoticias::create([
+                    'lng_idnoticias' => $lastInsertedId,
                     'str_categoria' => $categorias[$i],
                 ]);
             }
@@ -235,10 +235,10 @@ class PostController extends Controller
      *
      * @return Response
      */
-    public function buscarPost()
+    public function buscarNoticia()
     {
 
-        $posts = DB::table('tbl_post as p')
+        $noticias = DB::table('tbl_noticias as p')
                 ->join('tbl_autores as au', 'au.id', '=', 'p.lng_idautor')
                 ->join('tbl_admin as adm', 'adm.id', '=', 'p.lng_idadmin')
                 ->where('p.bol_eliminado', '=' ,0)
@@ -246,9 +246,9 @@ class PostController extends Controller
                 ->orderBy('p.id','asc')
                 ->get();
 
-            //dd($posts);die();
+            //dd($noticias);die();
         
-        return \View::make('post.buscarPost', compact('posts'));
+        return \View::make('noticias.buscarNoticia', compact('noticias'));
     }
 
     /**
@@ -256,18 +256,18 @@ class PostController extends Controller
      *
      * @return Response
      */
-    public function estatusPost($id, $estatus)
+    public function estatusNoticias($id, $estatus)
     {
     
-        $estatusPost = DB::update('update tbl_post set str_estatus = "'.$estatus.'", lng_idadmin = '.Auth::user()->id.' where id = '.$id.' and bol_eliminado = 0');
+        $estatusNoticias = DB::update('update tbl_noticias set str_estatus = "'.$estatus.'", lng_idadmin = '.Auth::user()->id.' where id = '.$id.' and bol_eliminado = 0');
          
-        return $estatusPost;
+        return $estatusNoticias;
     }
 
-    public function verPost($id)
+    public function verNoticia($id)
     {
     
-        $posts = DB::table('tbl_post as p')
+        $noticias = DB::table('tbl_noticias as p')
         ->join('tbl_autores as a', 'p.lng_idautor', '=', 'a.id')
         ->where('p.id', '=', $id)
         ->Where(function ($query) {
@@ -308,18 +308,18 @@ class PostController extends Controller
             ->lists('str_descripcion','id');
 
 
-        $etiquetas = DB::table('tbl_categorias_post as cat')
-        ->where('cat.lng_idpost', '=', $id)
+        $etiquetas = DB::table('tbl_categorias_noticias as cat')
+        ->where('cat.lng_idnoticias', '=', $id)
         ->orderBy('str_categoria')
         ->select('str_categoria')
         ->lists('str_categoria');          
 
         //dd($todasEtiquetas);
 
-        return \View::make('post.post', compact('posts','categorias','autores','tipopost','todasEtiquetas','etiquetas','tipoEstatus'));
+        return \View::make('noticias.noticia', compact('noticias','categorias','autores','tipopost','todasEtiquetas','etiquetas','tipoEstatus'));
     }
 
-    public function editarPost(Request $request)
+    public function editarNoticia(Request $request)
     {
         
         /*$validator = $this->validator($request->all());
@@ -331,12 +331,12 @@ class PostController extends Controller
         }*/
 
         $request["str_titulo"] = str_replace(" ","-",$request->str_titulo);
-        $post = Post::find($request->id);
+        $post = Noticias::find($request->id);
         $post->fill($request->all());
         $post->save();
 
-        Session::flash('message','¡Se han editado los datos del post con éxito!');
-        return Redirect::to('/Ver-Post-'.$request->id); 
+        Session::flash('message','¡Se han editado los datos de la noticia con éxito!');
+        return Redirect::to('/Ver-Noticia-'.$request->id); 
 
     }
 
@@ -344,10 +344,10 @@ class PostController extends Controller
     {
     
         $blb_img1 = base64_encode(file_get_contents($request->blb_img1));
-        $publicacion = DB::update("update tbl_post set str_tipo = '".$request->str_tipo."', blb_img1 = '".$blb_img1."' where id = ".$request->id);
+        $publicacion = DB::update("update tbl_noticias set str_tipo = '".$request->str_tipo."', blb_img1 = '".$blb_img1."' where id = ".$request->id);
 
-        Session::flash('message','¡Se ha cambiado la imágen del post con éxito!');
-        return Redirect::to('/Ver-Post-'.$request->id); 
+        Session::flash('message','¡Se ha cambiado la imágen de la noticia con éxito!');
+        return Redirect::to('/Ver-Noticia-'.$request->id); 
 
     }
 
@@ -358,22 +358,22 @@ class PostController extends Controller
         $blb_img2 = base64_encode(file_get_contents($request->blb_img2));
         $blb_img3 = base64_encode(file_get_contents($request->blb_img3));
 
-        $publicacion = DB::update("update tbl_post set str_tipo = '".$request->str_tipo."', blb_img1 = '".$blb_img1."', blb_img2 = '".$blb_img2."', blb_img3 = '".$blb_img3."' where id = ".$request->id);
+        $publicacion = DB::update("update tbl_noticias set str_tipo = '".$request->str_tipo."', blb_img1 = '".$blb_img1."', blb_img2 = '".$blb_img2."', blb_img3 = '".$blb_img3."' where id = ".$request->id);
 
-        Session::flash('message','¡Se ha cambiado la imágen del post con éxito!');
-        return Redirect::to('/Ver-Post-'.$request->id); 
+        Session::flash('message','¡Se ha cambiado la imágen de la noticia con éxito!');
+        return Redirect::to('/Ver-Noticia-'.$request->id); 
 
     }
 
     public function editarMultimedia3(Request $request)
     {
         
-        $post = Post::find($request->id);
+        $post = Noticias::find($request->id);
         $post->fill($request->all());
         $post->save();
 
         Session::flash('message','¡Se ha cambiado el contenido multimedia con éxito!');
-        return Redirect::to('/Ver-Post-'.$request->id); 
+        return Redirect::to('/Ver-Noticia-'.$request->id); 
 
     }
 
@@ -388,20 +388,20 @@ class PostController extends Controller
             );
         }*/
 
-        $post = Post::find($request->id);
+        $post = Noticias::find($request->id);
         $post->fill($request->all());
         $post->save();
 
         Session::flash('message','¡Se ha quitado el contenido multimedia con éxito!');
-        return Redirect::to('/Ver-Post-'.$request->id); 
+        return Redirect::to('/Ver-Noticia-'.$request->id); 
 
     }
 
     public function editarEtiquetas(Request $request)
     {
         
-        $categoriasPostActuales = DB::table('tbl_categorias_post')
-            ->where('lng_idpost', '=', $request->id)
+        $categoriasPostActuales = DB::table('tbl_categorias_noticias')
+            ->where('lng_idnoticias', '=', $request->id)
             ->delete();
 
         //dd($request);die();
@@ -412,23 +412,23 @@ class PostController extends Controller
         
         for ($i = 0; $i <= $total_categorias - 1; $i++)
         {
-            $categoriasPost = Categoria::create([
-                'lng_idpost' => $request->id,
+            $categoriasPost = CategoriasNoticias::create([
+                'lng_idnoticias' => $request->id,
                 'str_categoria' => $categorias[$i],
             ]);
         }
 
         Session::flash('message','¡Se han editado las etiquetas con éxito!');
-        return Redirect::to('/Ver-Post-'.$request->id);   
+        return Redirect::to('/Ver-Noticia-'.$request->id);   
     }
 
-    public function eliminarPost(Request $request)
+    public function eliminarNoticias(Request $request)
     {
         
-        $post = DB::update('update tbl_post set bol_eliminado = 1 where id = '.$request->id.' and bol_eliminado = 0');
+        $post = DB::update('update tbl_noticias set bol_eliminado = 1 where id = '.$request->id.' and bol_eliminado = 0');
 
-        Session::flash('message','¡Se ha eliminado el post con éxito!');
-        return Redirect::to('/Buscar-Post'); 
+        Session::flash('message','¡Se ha eliminado la noticia con éxito!');
+        return Redirect::to('/Buscar-Noticias'); 
 
     }
 

@@ -15,10 +15,10 @@
 
 				<!-- page title -->
 				<header id="page-header">
-					<h1>Buscar Autor Blog</h1>
+					<h1>Buscar Autor </h1>
 					<ol class="breadcrumb">
 					 <li><a href="{{ route('home')}}">Dashboard</a></li>
-					  <li class="active">Buscar Autor Blog</li>
+					  <li class="active">Buscar Autor </li>
 					</ol>
 
 
@@ -44,7 +44,7 @@
 					<div id="panel-1" class="panel panel-default">
 						<div class="panel-heading">
 							<span class="title elipsis">
-								<strong>LISTADO DE AUTORES DE Blog</strong> <!-- panel title -->
+								<strong>LISTADO DE AUTORES </strong> <!-- panel title -->
 							</span>
 
 							<!-- right options -->

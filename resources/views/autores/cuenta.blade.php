@@ -14,11 +14,11 @@
 
 				<!-- page title -->
 				<header id="page-header">
-					<h1>Ver Autor Blog</h1>
+					<h1>Ver Autor </h1>
 					<ol class="breadcrumb">
 						<li><a href="{{ route('home')}}">Dashboard</a></li>
-						<li><a href="{{ route('buscarCuentaAu')}}">Buscar Autor Blog</a></li>
-						<li class="active">Ver Autor Blog</li>
+						<li><a href="{{ route('buscarCuentaAu')}}">Buscar Autor </a></li>
+						<li class="active">Ver Autor </li>
 					</ol>
 				</header>
 
