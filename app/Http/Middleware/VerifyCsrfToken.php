@@ -13,6 +13,9 @@ class VerifyCsrfToken extends BaseVerifier
      */
     protected $except = [
         //
-        'Salir' 
+        '/',
+        'Salir',
+        'Editar-Noticia-Multimedia',
+        'Crear-Noticias' 
     ];
 }
