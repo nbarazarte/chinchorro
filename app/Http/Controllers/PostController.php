@@ -92,15 +92,72 @@ class PostController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-                
-            'str_tipo' => 'required|max:255',
-            'lng_idautor' => 'required|max:255',
-            'str_titulo' => 'required|max:255',
-            'str_post_resumen' => 'required', 
-            'str_post' => 'required',      
+        if($data['str_tipo'] == 'imagen'){
 
-        ]);
+            return Validator::make($data, [
+                    
+                'str_tipo' => 'required|max:255',
+                'lng_idautor' => 'required|max:255',
+                'str_titulo' => 'required|max:255',
+                'str_post_resumen' => 'required', 
+                'str_post' => 'required',
+                'blb_img1' => 'required',      
+
+            ]);            
+            
+        }else if($data['str_tipo'] == 'carrusel-imagen'){
+
+            return Validator::make($data, [
+                    
+                'str_tipo' => 'required|max:255',
+                'lng_idautor' => 'required|max:255',
+                'str_titulo' => 'required|max:255',
+                'str_post_resumen' => 'required', 
+                'str_post' => 'required',
+                'blb_img1' => 'required',
+                'blb_img2' => 'required',
+                /*'blb_img3' => 'required',*/      
+
+            ]);              
+
+        }else if($data['str_tipo'] == 'video'){
+
+            return Validator::make($data, [
+                    
+                'str_tipo' => 'required|max:255',
+                'lng_idautor' => 'required|max:255',
+                'str_titulo' => 'required|max:255',
+                'str_post_resumen' => 'required', 
+                'str_post' => 'required', 
+                'str_video' => 'required',     
+
+            ]);              
+        
+        }else if($data['str_tipo'] == 'audio'){
+        
+            return Validator::make($data, [
+                    
+                'str_tipo' => 'required|max:255',
+                'lng_idautor' => 'required|max:255',
+                'str_titulo' => 'required|max:255',
+                'str_post_resumen' => 'required', 
+                'str_post' => 'required',
+                'str_audio' => 'required',      
+
+            ]);          
+        }else{
+
+            return Validator::make($data, [
+                    
+                'str_tipo' => 'required|max:255',
+                'lng_idautor' => 'required|max:255',
+                'str_titulo' => 'required|max:255',
+                'str_post_resumen' => 'required', 
+                'str_post' => 'required',      
+
+            ]); 
+
+        }
     }
 
     /**

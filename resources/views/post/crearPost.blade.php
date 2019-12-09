@@ -87,15 +87,15 @@
 
 
 														<div class="col-md-6 col-sm-6">
-															<label>Tipo de Post *</label>
+															<label>Tipo de Publicación *</label>
 															<label class="input margin-bottom-10">
 															
 
 											 					<select id="str_tipo" name="str_tipo" class="form-control required" onchange="showfieldTipo(this.options[this.selectedIndex].value)">
 											 						<option value="">Seleccione</option>
-											 						<option value="simple">Post Simple</option>
-											 						<option value="imagen">Post con sólo una imagen</option>
-											 						<option value="carrusel-imagen">Post con carrusel de imágenes</option>
+											 						<!--<option value="simple">Post Simple</option>-->
+											 						<option value="imagen">Post con sólo una imágen</option>
+											 						<option value="carrusel-imagen">Post con carrusel de imagenes</option>
 											 						<option value="video">Post con video</option>
 											 						<option value="audio">Post con audio</option>
 											 					</select>
@@ -173,7 +173,7 @@
 
 														<div class="col-md-12 col-sm-12">
 															<label>
-																Resumen del Post *
+																Resumen *
 																<small class="text-muted"></small>
 															</label>
 
@@ -189,7 +189,7 @@
 
 														<div class="col-md-12 col-sm-12">
 															<label>
-																Post *
+																Contenido *
 																<small class="text-muted"></small>
 															</label>
 

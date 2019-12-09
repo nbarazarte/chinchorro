@@ -60,7 +60,7 @@ Route::group(['middleware' => 'auth'], function () {
 						'as' =>'eliminarCuenta'
 		]);
 
-		//Eliminar Imágen
+		//Eliminar Imagen
 		Route::post('Eliminar-Imagen', [
 						'uses' => 'HomeController@eliminarImagen',
 						'as' =>'eliminarImagen'
