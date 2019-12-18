@@ -66,8 +66,7 @@
 										<th>Ver</th>
 										<th>Imágen</th>
 										<th>Título</th>
-										<th>Tipo</th>
-										<th>Autor</th>
+										<th>Fuente</th>
 										<th>Fecha</th>
 										<th>Estatus</th>
 										<th>Usuario</th>
@@ -118,62 +117,34 @@
 													  	</center>
 													  @endif
 
-
-
-
-
-
 												</td>												
-
 												<td>
-													 	{{ str_replace("-"," ",$noticia->str_titulo) }}
+													{{ str_replace("-"," ",$noticia->str_titulo) }}
 												</td>
-
 												<td>
-
-														{{ ucfirst($noticia->str_tipo) }}
-
-												</td>
-
-												<td>
-
-														<div class="row">
-															<div class="col-md-4">
-															  	<center>
-																  	<figure class="margin-bottom-10"><!-- image -->
-																		<img src="data:image/jpeg;base64,{{ $noticia->blb_img }}" alt="" title="" height="34">
-																	</figure>
-																</center>
-															</div>
-															<div class="col-md-8">{{ $noticia->autor }}</div>
-														</div>
-
-
-													 	
+													{{ $noticia->autor }}
 												</td>											
-
 												<td>
-													 	{{ $noticia->fecha }}
-												</td>
 
+													<?php
+
+												  		$noticia->fecha = substr($noticia->fecha, 0,10);
+
+												        $var = explode('-',$noticia->fecha);
+
+												        $noticia->fecha = "$var[2]-$var[1]-$var[0]";
+
+													?>
+
+													{!! $noticia->fecha !!} 
+
+												</td>
 												<td> 
-														{{ $noticia->str_estatus }}
+													{{ $noticia->str_estatus }}
 												</td>
-												
 												<td> 
-														<div class="row">
-															<div class="col-md-4">
-															  	<center>
-																  	<figure class="margin-bottom-10"><!-- image -->
-																		<img src="data:image/jpeg;base64,{{ $noticia->img_usuario }}" alt="" title="" height="34">
-																	</figure>
-																</center>
-															</div>
-															<div class="col-md-8">{{ $noticia->usuario }}</div>
-														</div>
-
+													{{ $noticia->usuario }}
 												</td>
-
 										</tr>
 
 									@endforeach

@@ -1,7 +1,7 @@
 <li>
 	<a href="#">
 		<i class="fa fa-menu-arrow pull-right"></i>
-		<i class="main-icon fa fa-user""></i> <span>Autores</span>
+		<i class="main-icon fa fa-user""></i> <span>Autores/Fuentes</span>
 	</a>
 	<ul>
 		<li><a href="{{ route('registrarAu')}}">Nuevo</a></li>

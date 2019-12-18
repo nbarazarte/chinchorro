@@ -66,7 +66,6 @@
 										<th>Ver</th>
 										<th>Imágen</th>
 										<th>Título</th>
-										<th>Tipo</th>
 										<th>Autor</th>
 										<th>Fecha</th>
 										<th>Estatus</th>
@@ -118,60 +117,34 @@
 													  	</center>
 													  @endif
 
-
-
-
-
-
 												</td>												
 
 												<td>
-													 	{{ str_replace("-"," ",$post->str_titulo) }}
+													{{ str_replace("-"," ",$post->str_titulo) }}
 												</td>
-
 												<td>
-
-														{{ ucfirst($post->str_tipo) }}
-
-												</td>
-
-												<td>
-
-														<div class="row">
-															<div class="col-md-4">
-															  	<center>
-																  	<figure class="margin-bottom-10"><!-- image -->
-																		<img src="data:image/jpeg;base64,{{ $post->blb_img }}" alt="" title="" height="34">
-																	</figure>
-																</center>
-															</div>
-															<div class="col-md-8">{{ $post->autor }}</div>
-														</div>
-
-
-													 	
+													{{ $post->autor }}
 												</td>											
-
 												<td>
-													 	{{ $post->fecha }}
-												</td>
 
-												<td> 
-														{{ $post->str_estatus }}
-												</td>
-												
-												<td> 
-														<div class="row">
-															<div class="col-md-4">
-															  	<center>
-																  	<figure class="margin-bottom-10"><!-- image -->
-																		<img src="data:image/jpeg;base64,{{ $post->img_usuario }}" alt="" title="" height="34">
-																	</figure>
-																</center>
-															</div>
-															<div class="col-md-8">{{ $post->usuario }}</div>
-														</div>
+													<?php
 
+												  		$post->fecha = substr($post->fecha, 0,10);
+
+												        $var = explode('-',$post->fecha);
+
+												        $post->fecha = "$var[2]-$var[1]-$var[0]";
+
+													?>
+
+													{!! $post->fecha !!} 
+
+												</td>
+												<td> 
+													{{ $post->str_estatus }}
+												</td>
+												<td> 
+													{{ $post->usuario }}
 												</td>
 
 										</tr>

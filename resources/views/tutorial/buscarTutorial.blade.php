@@ -103,9 +103,21 @@
 												</td>
 
 												<td>
-													 	{{ $tutorial->fecha }}
-												</td>
+											
+													<?php
 
+												  		$tutorial->fecha = substr($tutorial->fecha, 0,10);
+
+												        $var = explode('-',$tutorial->fecha);
+
+												        $tutorial->fecha = "$var[2]-$var[1]-$var[0]";
+
+													?>
+
+													{!! $tutorial->fecha !!} 
+
+												</td>
+												
 												<td> 
 														{{ $tutorial->str_estatus }}
 												</td>
